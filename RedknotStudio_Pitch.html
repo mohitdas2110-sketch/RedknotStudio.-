@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redknot Studio — One Video. Endless Content.</title>
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #f5f0e8;
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow-x: hidden;
+}
+
+/* TYPOGRAPHY */
+.sans { font-family: Helvetica, Arial, sans-serif; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, #0a0a0a 70%);
+}
+
+.hero-tag {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 42px; }
+}
+
+.hero h1 .gold {
+  color: #c9a84c;
+  font-style: italic;
+}
+
+.hero-sub {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  color: #888;
+  max-width: 460px;
+  line-height: 1.75;
+  margin-top: 24px;
+  font-weight: 300;
+}
+
+.hero-buttons {
+  margin-top: 48px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: #c9a84c;
+  color: #0a0a0a;
+  padding: 16px 36px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: #e8c96a; }
+
+.btn-secondary {
+  background: transparent;
+  color: #f5f0e8;
+  padding: 16px 36px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover { border-color: #c9a84c; color: #c9a84c; }
+
+/* DIVIDER */
+.divider { width: 100%; height: 1px; background: rgba(255,255,255,0.06); }
+
+/* SECTIONS */
+.section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 96px 24px;
+}
+
+.label {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .section-title { font-size: 32px; }
+}
+
+.section-title .gold { color: #c9a84c; font-style: italic; }
+
+.section-body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #888;
+  max-width: 560px;
+  font-weight: 300;
+}
+
+/* PROBLEM CARDS */
+.cards-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2px;
+  margin-top: 52px;
+}
+
+.card {
+  background: #111111;
+  padding: 40px 32px;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.card:hover { border-top-color: #c9a84c; }
+
+.card-num {
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(201,168,76,0.12);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+}
+
+.card p {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* HOW IT WORKS */
+.how-box {
+  background: #111111;
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 60px 52px;
+  margin-top: 52px;
+}
+
+@media (max-width: 600px) {
+  .how-box { padding: 36px 24px; }
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 40px;
+  margin-top: 44px;
+}
+
+.step-icon { font-size: 28px; margin-bottom: 14px; }
+
+.step h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* QUOTE */
+.quote {
+  border-left: 2px solid #c9a84c;
+  padding: 24px 32px;
+  margin-top: 52px;
+  background: rgba(201,168,76,0.04);
+}
+
+.quote p {
+  font-size: 22px;
+  font-style: italic;
+  color: #f5f0e8;
+  line-height: 1.6;
+}
+
+/* PRICING */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2px;
+  margin-top: 52px;
+}
+
+.price-card {
+  background: #111111;
+  padding: 48px 36px;
+  position: relative;
+}
+
+.price-card.hot { background: #c9a84c; }
+.price-card.hot * { color: #0a0a0a !important; }
+.price-card.hot .feat-line { border-bottom-color: rgba(0,0,0,0.1) !important; }
+.price-card.hot .feat-line::before { color: #0a0a0a !important; }
+
+.hot-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: #0a0a0a;
+  color: #c9a84c;
+  padding: 5px 10px;
+}
+
+.price-tier {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 14px;
+}
+
+.price-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.price-amount {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 46px;
+  font-weight: 200;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.price-amount sup { font-size: 22px; }
+
+.price-note {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 28px;
+}
+
+.feat-list { list-style: none; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 20px; }
+
+.feat-line {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #777;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 300;
+}
+
+.feat-line::before { content: '→'; color: #c9a84c; font-size: 11px; flex-shrink: 0; }
+
+/* WHY */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 44px;
+  margin-top: 52px;
+}
+
+.why-icon { font-size: 26px; margin-bottom: 14px; }
+
+.why-item h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.why-item p {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* CTA BOTTOM */
+.cta-bottom {
+  background: #111111;
+  border-top: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  text-align: center;
+  padding: 110px 24px;
+}
+
+.cta-bottom .section-title { margin-bottom: 14px; }
+
+.cta-sub {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 44px;
+  font-weight: 300;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 36px 24px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  color: #333;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-tag">Redknot Studio &nbsp;·&nbsp; Kolkata</p>
+  <h1>One Video.<br><span class="gold">Endless Content.</span></h1>
+  <p class="hero-sub sans">We create one powerful 60–90 second master video for your brand — then turn it into weeks of reels and posts that actually work.</p>
+  <div class="hero-buttons">
+    <a href="#pricing" class="btn-primary">See Pricing</a>
+    <a href="https://wa.me/919062057918?text=Hi%20Redknot%20Studio%2C%20I%20am%20interested%20in%20your%20video%20package" target="_blank" class="btn-secondary">WhatsApp Us</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<div class="section">
+  <p class="label">The Problem</p>
+  <h2 class="section-title">Why most businesses<br><span class="gold">struggle</span> with content</h2>
+  <p class="section-body">You know you need video. But creating it consistently feels overwhelming, expensive, and time-consuming.</p>
+
+  <div class="cards-3">
+    <div class="card">
+      <div class="card-num">01</div>
+      <h3>No time to create content</h3>
+      <p>You're running a business. Shooting, editing and posting every day is a full-time job you didn't sign up for.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <h3>Inconsistent quality</h3>
+      <p>Phone videos look amateur. Customers judge your brand the moment they land on your profile.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">03</div>
+      <h3>No clear story</h3>
+      <p>Random posts don't build trust. You need content that tells people exactly who you are and why to choose you.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<div class="section" id="how">
+  <p class="label">Our Solution</p>
+  <h2 class="section-title">One shoot.<br><span class="gold">Maximum</span> output.</h2>
+  <p class="section-body">We come to your location, shoot a professional master video, and extract everything you need from that single session.</p>
+
+  <div class="how-box">
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">🎯</div>
+        <h3>We Plan</h3>
+        <p>We understand your brand, your audience, and your goal. Then we build a content strategy around one powerful video.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">🎬</div>
+        <h3>We Shoot</h3>
+        <p>One professional on-location shoot. A 60–90 second master video that captures your brand's best story.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">✂️</div>
+        <h3>We Deliver</h3>
+        <p>Your master video plus 3–5 reels cut from the same footage. Ready for Instagram, Facebook and YouTube.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>"One great video shoot gives you enough content for an entire month — without the daily stress of creation."</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+  <p class="label">Investment</p>
+  <h2 class="section-title">Simple,<br><span class="gold">honest</span> pricing</h2>
+  <p class="section-body">No hidden fees. No long contracts. Start with what you need and grow from there.</p>
+
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <p class="price-tier">Starter</p>
+      <h3 class="price-name">The Foundation</h3>
+      <div class="price-amount"><sup>&#8377;</sup>8,000</div>
+      <p class="price-note sans">One-time &middot; Perfect to start</p>
+      <ul class="feat-list">
+        <li class="feat-line">1 Master Video (60–90 sec)</li>
+        <li class="feat-line">Professional on-location shoot</li>
+        <li class="feat-line">Edited &amp; colour graded</li>
+        <li class="feat-line">Ready for all platforms</li>
+        <li class="feat-line">Delivered in 5–7 days</li>
+      </ul>
+    </div>
+
+    <div class="price-card hot">
+      <span class="hot-badge">Most Popular</span>
+      <p class="price-tier">Complete</p>
+      <h3 class="price-name">The Full Package</h3>
+      <div class="price-amount"><sup>&#8377;</sup>12,000</div>
+      <p class="price-note sans">One-time &middot; Best value</p>
+      <ul class="feat-list">
+        <li class="feat-line">1 Master Video (60–90 sec)</li>
+        <li class="feat-line">5 Reels from same footage</li>
+        <li class="feat-line">Captions &amp; hashtag strategy</li>
+        <li class="feat-line">Posting schedule included</li>
+        <li class="feat-line">Delivered in 7 days</li>
+      </ul>
+    </div>
+
+    <div class="price-card">
+      <p class="price-tier">Growth</p>
+      <h3 class="price-name">Monthly Retainer</h3>
+      <div class="price-amount"><sup>&#8377;</sup>15,000</div>
+      <p class="price-note sans">Per month &middot; Ongoing growth</p>
+      <ul class="feat-list">
+        <li class="feat-line">Fresh shoot every month</li>
+        <li class="feat-line">1 Master + 5 Reels monthly</li>
+        <li class="feat-line">Content calendar planning</li>
+        <li class="feat-line">Performance tracking</li>
+        <li class="feat-line">Priority turnaround</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- WHY US -->
+<div class="section">
+  <p class="label">Why Us</p>
+  <h2 class="section-title">What makes us<br><span class="gold">different</span></h2>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">📍</div>
+      <h3>Local &amp; Present</h3>
+      <p>We are in Kolkata. We show up, shoot on location, and understand what resonates in this market.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">💡</div>
+      <h3>Strategy First</h3>
+      <p>We don't just shoot. We understand your business goal and make sure every second of video serves it.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⚡</div>
+      <h3>Low Risk Entry</h3>
+      <p>No long contracts. Start with one video. Love the result, then we scale together.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🔄</div>
+      <h3>Maximum from Minimum</h3>
+      <p>One shoot gives you a master video plus multiple reels. Your money works harder than any other content spend.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOTTOM CTA -->
+<div class="cta-bottom">
+  <p class="label">Get Started</p>
+  <h2 class="section-title">Ready to tell<br>your <span class="gold">story?</span></h2>
+  <p class="cta-sub sans">One conversation. One shoot. Content that works for months.</p>
+  <div class="cta-buttons">
+    <a href="tel:+919062057918" class="btn-primary">Call Now &mdash; 9062057918</a>
+    <a href="https://wa.me/919062057918?text=Hi%20Redknot%20Studio%2C%20I%20am%20interested%20in%20your%20video%20package" target="_blank" class="btn-secondary">WhatsApp Us</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 &nbsp;&middot;&nbsp; Redknot Studio &nbsp;&middot;&nbsp; Kolkata, West Bengal
+</footer>
+
+</body>
+</html>
